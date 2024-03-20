@@ -146,7 +146,7 @@ const WeatherScreen = () => {
             <Text style={[getCommonStyleValue().titleText]}>{response?.name}</Text>
             <View style={{flexDirection:'row'}}>
             <Text style={[getCommonStyleValue().tempText]}>{Math.round(response?.main?.temp)}</Text>
-            <Text>o</Text>
+            <Text style={[getCommonStyleValue().normalText]}>o</Text>
             <Text style={[getCommonStyleValue().tempText]}>C</Text>
             </View>
             <View >
