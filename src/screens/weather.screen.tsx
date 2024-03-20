@@ -22,7 +22,7 @@ const WeatherScreen = () => {
   const [isLoder, setLoader] = useState(false)
   const [isError, setError] = useState(false)
   const [isDownloaded, setDownloaded] = useState(false)
-  const [errorMsg, setErrorMsg] = useState("Somting went wrong");
+  const [errorMsg, setErrorMsg] = useState("Something went wrong");
 
   const cntry = [
    
@@ -33,10 +33,17 @@ const WeatherScreen = () => {
     { label: 'Abidjan, CI', value: '5' },
   ];
 
+   /**handle city selection**/
   const contryClick = (city:string) => {
     setCity(city)
   }
 
+
+  /**
+   * 
+   * render forcast item list for flatList 
+   * 
+   */
   const flatListDesign = (item:any) => {
 
     let date=moment(item?.dt_txt).format('DD/MM/YYYY')
@@ -49,7 +56,6 @@ const WeatherScreen = () => {
           </View>
           <View >
           {item?.weather?.map((block:any)=>{
-            console.log("block",block);
             
               return <Text style={[getCommonStyleValue().normalText]}>{block?.description}</Text>
             
@@ -110,8 +116,10 @@ const WeatherScreen = () => {
      console.log(error);
      
     })
-  }, [city]);
+  }, [city]);//fetching weather when city is changed
 
+
+  /**handle error popup click selection**/
   const handleLoginDialogCancel = () => {
    setError(false)
   };
